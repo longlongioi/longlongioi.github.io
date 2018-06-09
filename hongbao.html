@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html style="font-size: 85px;">
+<head>
+  <style>body{width:100%;overflow-x:hidden;color:#341e00;}.wrapper{max-width:12rem;overflow:hidden;margin:0 auto;padding-bottom:1rem;}
+  .t-banner{position:relative;}.t-banner img{display:block;width:100%;}.content1{width:90%;margin:0 auto;}
+  input[type='text'],input[type='tel']{height:1.5rem;width:100%;border:none;font-size:.52rem;text-align:left;padding-left:10px;border-radius:4px;}
+  input[type='text']::-webkit-input-placeholder,input[type='tel']::-webkit-input-placeholder{color:#a9a9a9;text-align:left;}.combtn{display:block;background-color:#fe4d3d;color:#fff;font-size:.6rem;height:1.5rem;width:100%;margin:.5rem auto 0;border-radius:4px;}
+  a.combtn:link,a.combtn:visited{color:#fff;}
+  a.combtn:hover{color:#fff;}
+  .combtn-hover{background:#fb2613;}
+  .capture-tip{color:#fff;font-size:.6rem;margin-top:.2rem;}
+  .sec-sub-title{line-height:1rem;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgkAAAABAQMAAABuYK//AAAABlBMVEVdQDUAAACKcfI8AAAAAnRSTlMzAIL4qAgAAAAVSURBVAjXY2hgQAfy/3GDAwwYoAEAySocxUiGKqkAAAAASUVORK5CYII=) no-repeat;background-size:100% auto;
+  background-position:0px;font-size:.53rem;color:#333333;
+  text-align:center;
+  font-weight:normal;
+  margin:0 auto;
+  margin-top:0.25rem;
+  width:93%;}
+  .act-rules{list-style-type:none;}
+  .rule{margin:0 auto;}
+  .rule ul{width:90%;margin:0 auto;}
+  .rule li{font-size:.45rem;line-height:.58rem;margin-bottom:.28rem;color:#333333;}
+  .rule li .toggle-help{color:#CB120E;font-weight:normal;}
+  .result .result-inner{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+  box-sizing:border-box;min-height:3.2rem;background:url(https://xs01.meituan.net/waimai_c_activity_web/img/resource/red-enve2/result-bg.c1682c6b.png) no-repeat;background-size:100% 100%;
+  text-align:center;
+  margin:.21rem 0.4rem 0;
+  padding:0.36rem 0.4rem 0;
+  position:relative;}
+  .result-title{font-size:.53rem;text-align:left;margin-bottom:0.1rem;}
+  .result-sub-title{font-size:.45rem;color:#666;text-align:left;float:left;line-height:.6rem;}
+  .result .success,.result .success a{color:#ef361e;position:relative;}
+  .result .success a{display:block;}.result .number .rmb{font-size:.86rem;font-style:normal;font-weight:bold;}
+  .result .number{line-height:1.8rem;height:1.6rem;margin-bottom:.23rem;}
+  .couponname{height:1.6rem;margin-top:0.14rem;}
+  .result .number i{font-size:1.57rem;font-style:normal;margin-left:-0.3rem;white-space:nowrap;}
+  .success .result-sub-title i{font-size:.6rem;}
+  .result .result-inner-usepri i{font-size:2.1rem;font-style:normal;font-weight:bold;}
+  .result-inner-usepri .number{margin-top:-0.1rem;}.info{text-align:center;width:90%;margin:0 auto;}
+  .info .modification{color:#e31830;}
+  .info .goupd{color:#e01933;margin-left:.1rem;}
+  .downloadbtn,.gotobtn{width:93%;}
+  .downloadbtn{margin:0px auto;}
+  .dlbtn{background-color:#fff;color:#333;line-height:1.5rem;}
+  .gotobtn{line-height:1.5rem;color:#333333;}
+  .result .fail-over,.result .fail-expire,.result .result-gray,.result .result-red{padding-top:0.8rem;font-weight:bold;color:#ccc;font-size:0.78rem;}
+  .info{font-size:.45rem;margin-bottom:.3rem;}
+  .user-phone{color:#ef361e;}.result-gray .info ,.result-red .info{font-size:0.41rem;line-height:0.6rem;color:#ccc;}.result-red .info{line-height:1rem;}
+  .result-red{padding-top:0.8rem;font-weight:bold;font-size:0.8rem;color:#ef361e;}
+  .help-main{margin-top:.93rem;}.friends{margin-top:.7rem;}
+  .friends-list{width:90%;margin:.19rem auto 0;}
+  .friend{border-top:1px solid rgba(93,64,53,0.2);padding:.386rem 0;}
+  .friend:first-child{border-top:none;}
+  .phoneverifier em{font-style:normal;}
+  .phoneverifier-title{text-align:center;font-size:17px;}
+  .phoneverifier-desc{font-size:12px;color:#aaaaaa;text-align:center;margin-top:5px;}
+  .phoneverifier-tel{font-size:14px;color:#656565;background:url('https://xs01.meituan.net/waimai_c_activity_web/img/icons/tel.png') no-repeat;background-size:12px;padding-left:18px;margin-top:10px;margin-left:7px;}
+  .phoneverifier-codewrap{margin-top:12px;position:relative;}.phoneverifier-codewrap .icon{font-size:17px;position:absolute;top:8px;left:137px;}.phoneverifier-codewrap-inline .icon{top:11px;left:60%;}
+  .phoneverifier-codeinput{height:1.5rem;width:162px;font-size:0.52rem;border:none;padding:3px 10px;vertical-align:top;border-radius:4px;}
+  .phoneverifier-codesend{width:30%;height:1.5rem;line-height:40px;font-size:0.45rem;vertical-align:top;float:right;margin-top:0;background-color:#ffd603;color:#6b450a;border-radius:4px;}
+  .phoneverifier-btn{display:block;width:100%;height:1.5rem;font-size:20px;margin-top:20px;background-color:#ffd603;color:#6b450a;}.phoneverifier-codesend-red,.phoneverifier-btn-red{background-color:#fe4d3d;color:#fff;}
+  .phoneverifier-sub{margin-top:15px;font-size:12px;color:#898989;}.phoneverifier-voice{color:#ffd603;text-decoration:underline;}.phoneverifier-voice-red{color:#ef361e;}.phoneverifier-voice-disable{color:inherit;}
+  .phoneverifier-dialingtip{font-size:11px;color:#898989;text-align:left;width:90%;margin:0 auto;margin-top:8px;}.phoneverifier-informtip{font-size:12px;margin-top:5px;}.phoneverifier-informtip a{color:#ff6900;}
+  .phoneverifier-protocol{font-size:12px;color:#898989;}.phoneverifier-protocol a{color:#898989;text-decoration:underline;}
+  .phoneverifier-protocol i{display:block;float:left;width:12px;height:12px;border:1px solid #898989;border-radius:50%;margin-right:3px;position:relative;top:3px;}
+  .phoneverifier-protocol-inline i{float:none;display:inline-block;}
+  .phoneverifier-protocol i em{display:block;width:7px;height:4px;border-left:1px solid #898989;border-bottom:1px solid #898989;-webkit-transform:rotate(-45deg);
+  -moz-transform:rotate(-45deg);transform:rotate(-45deg);margin-top:3px;margin-left:2px;}.wx-tip{position:absolute;position:fixed;z-index:10000;top:0;bottom:0;left:0;
+  right:0;background:url("https://xs01.meituan.net/waimai_c_activity_web/img/wx_tip.png") no-repeat;-webkit-background-size:100% auto;-moz-background-size:100% auto;background-size:100% auto;}
+  .mask{background:rgba(0,0,0,0.7);}.content-bg,.content-bg #friend_luck_list,.content-bg .rule{width:95%;margin:0rem auto;background:rgba(255,255,255,0.6);border-radius:5px;padding:.3rem 0px;}
+  .content3.content-bg{width:100%;padding:0;background:none;}.content-bg #friend_luck_list,.content-bg .rule{margin:0.3rem auto;}.margin-gap{margin-top:.3rem;}.padding-no-gap{padding-top:0;}
+  .picyzm-title{font-size:18px;text-align:center;margin-top:10px;font-weight:bold;}.picyzm-tip{color:#d4d4d4;font-size:13px;margin:10px 0px;text-align:center;}
+  .picyzm-pic{width:90px;height:30px;float:left;border:1px solid #d4d4d4;margin-left:10px;background-repeat:no-repeat;background-size:90px 30px;}.picyzm{width:85%;margin:0px auto;}
+  .picyzm .picyzm-contect{width:90px;height:30px;float:left;margin-left:30px;border:1px solid #d4d4d4;color:#333;font-size:16px;}
+  .picyzm-submit{width:80%;height:35px;background-color:#fe4d3d;color:#ffffff;margin:15px auto;border-radius:3px;font-size:16px;text-align:center;line-height:35px;}
+  .picyzm-close{color:#a4a4a4;font-size:26px;position:absolute;right:7px;top:3px;width:30px;text-align:right;}.picyzm-error{width:80%;margin:0px auto;margin-top:8px;font-size:12px;color:#ff0000;}
+  .phoneverifier-animateShow{transition:.6s;-webkit-transition:.6s;opacity:0;}
+  .result-bottom{clear:both;border-top:1px dashed #eaeaea;color:#a9a9a9!important;font-size:.4rem!important;line-height:0.5rem;padding:0.2rem 0;text-align:left;}
+  .result-sub-container{width:7rem;}
+  .result-surprise,.result-best{width:2.2rem;height:.6rem;line-height:.6rem;background:url('https://xs01.meituan.net/waimai_c_activity_web/img/resource/result-icon-surprise.2064ef55.png') no-repeat;background-size:100%;float:left;padding:0 5px;margin-right:0.13rem;}
+  .result-best{background:url('https://xs01.meituan.net/waimai_c_activity_web/img/resource/result-icon-best.89406957.png') no-repeat;background-size:100%;}
+  .poi_sign{height:.56rem;line-height:.56rem;float:left;padding:0 .1rem;margin-left:0.13rem;font-size:.3rem;}.poi_mutex{color:#06c1ae;border:0.01rem solid rgba(6,193,174,0.3);}
+  .poi_share{color:#FF9F00;border:0.01rem solid rgba(255,159,0,0.3);}.result-meituan{background:#fad100;color:#733e04;font-size:0.38rem;height:.6rem;line-height:.6rem;float:left;border-radius:3px;padding:0 5px;margin-right:0.13rem;}
+  .result-surprise:before{display:inline-block;width:20px;height:20px;background:url('https://xs01.meituan.net/waimai_c_activity_web/img/thumb.png') no-repeat;}.result i.coupon-price-float{font-size:0.86rem;}
+  .result .info{color:#a9a9a9!important;font-size:.3rem!important;line-height:0.65rem;text-align:center;width:100%;}.result .result-red{color:#ef361e;font-size:0.51rem;}.result .result-inner-nobottom{padding-top:0.7rem;}
+  .result .coupons-more{margin:.21rem 0.4rem 0;background-color:white;border-radius:4px;font-size:.45rem;color:#666;text-align:center;line-height:1rem;min-height:1rem;}
+  .result .recommand-logo{width:0.45rem;height:0.45rem;object-fit:cover;vertical-align:middle;}.result .recommand-msg{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:7rem;vertical-align:middle;display:inline-block;}
+  .result .coupons-condition{display:table-cell;vertical-align:middle;width:7.7rem;}.result .coupons-link{display:table-cell;vertical-align:middle;padding-left:0.3rem;width:1.8rem;color:#ef361e;}.result .poi-coupons,.normal-coupons{cursor:pointer;}
+  .coupons-more-arrow{position:relative;top:0.2rem;left:-0.1rem;height:0.6rem;}.result-inner-nobottom .couponname{line-height:0.8rem}
+  .err-msg{position:absolute;top:50%;transform:translate(0,-50%);-webkit-transform:translate(0,-50%);left:0;text-align:center;width:100%;}.err-short-msg{font-size:1.1rem;}
+  .err-short-msg:before{display:block;content:'';height:1px;background:#ccc;top:50%;width:1.5rem;left:2rem;position:absolute;}
+  .err-short-msg:after{display:block;content:'';height:1px;background:#ccc;top:50%;width:1.5rem;right:2rem;position:absolute;}.comment_ul{padding:0 5%;}
+  .comment_li{border-bottom:1px solid rgba(93,64,53,0.2);padding:0.3125rem 0;color:#45322b;}.comment_fl{max-width:60%;}
+  .comment_usr_pic{width:1.125rem;float:left;border-radius:50%;margin-right:0.28125rem;}
+  .comment_usr_name{font-size:.45rem;line-height:0.625rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .comment_usr_status{font-size:0.38rem;line-height:0.525rem;color:#65544e;}.comment_amount{font-size:0.5rem;color:#45322b;text-align:right;line-height:0.84375rem;}
+  .comment_best .comment_amount{line-height:0.625rem;}
+  .comment_amount_best{width:2.5rem;height:0.55rem;line-height:0.55rem;background:url('https://xs01.meituan.net/waimai_c_activity_web/img/resource/result-icon-best.89406957.png') no-repeat;background-size:100%;}
+  .comment_best_tip{margin-bottom:-0.3rem;font-size:.45rem;color:#FE3F26;text-align:center;overflow:hidden;}
+  .comment_li:last-child{border:none;}.red{color:#ef361e;}.data-img,.data-img img{width:1.5rem;height:1.5rem;border-radius:100%;display:block;float:left;object-fit:cover;}
+  .zhe{font-style:normal;display:block;float:right;margin-top:-0.3rem;font-size:0.6rem!important;}.other-title{font-size:.2rem;}
+  .jin{height:1.6rem;padding-top:.1rem;}.jiner{padding-left:.3rem;}.shenlue{max-width:4.5rem;margin-left:0.3rem;}
+  .shenlue .result-title{max-width:5rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}.noshenlue{max-width:5.9rem;}
+  .noshenlue .result-title{max-width:4.5rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}.result i.mm{font-size:1.57rem;}
+  .youhui{font-size:.45rem;color:#666;}.geo-location{padding-top:1.6rem;font-size:0.4rem;}.ad-flag{background-color:#000000;opacity:0.4;position:absolute;}
+  .ad-flag-text{bottom:0.38rem;right:2.5%;}.ad-text{font-size:13px;color:#ffffff;transform:scale(0.8,0.8);}.ad-video-duration{bottom:0.38rem;left:2.5%;border:1px white solid;padding:2px 1px;}
+  .ad-video-text{position:absolute;right:0.5rem;top:0.56rem;border-radius:1rem;background-color:#FFD161;font-size:0.45rem;color:#333;padding:0.15rem 0.35rem;z-index:110;cursor:pointer;}
+  .ad-video-play{width:inherit !important;position:absolute;left:50%;top:50%;margin-left:-26px;margin-top:-26px;cursor:pointer;}.ad-video{left:0;display:none;width:100%;z-index:101;margin-bottom:20px;}
+  </style>
+
+<!--  <style>
+    body
+	{width:100%;overflow-x:hidden;color:#341e00;}
+	.wrapper{max-width:12rem;overflow:hidden;margin:0 auto;padding-bottom:1rem;}
+	.t-banner{position:relative;}
+	.t-banner img{display:block;width:100%;}
+	.content1{width:90%;margin:0 auto;}
+	input[type='text'],input[type='tel']
+	{height:1.5rem;
+	width:100%;
+	border:none;
+	font-size:.52rem;
+	text-align:left;
+	padding-left:10px;
+	border-radius:4px;}
+	input[type='text']::-webkit-input-placeholder,input[type='tel']::-webkit-input-placeholder
+	{color:#a9a9a9;text-align:left;}
+	.combtn
+	{display:block;
+	background-color:#fe4d3d;
+	color:#fff;
+	font-size:.6rem;height:1.5rem;width:100%;
+	margin:.5rem auto 0;
+	border-radius:4px;}
+	a.combtn:link,a.combtn:visited{color:#fff;}
+	a.combtn:hover{color:#fff;}
+   .combtn-hover{background:#fb2613;}
+   .capture-tip{color:#fff;font-size:.6rem;margin-top:.2rem;}
+   .content-bg,.content-bg #friend_luck_list,.content-bg .rule{width:95%;margin:0rem auto;background:rgba(255,255,255,0.6);border-radius:5px;padding:.3rem 0px;}
+   .content3.content-bg{width:100%;padding:0;background:none;}.content-bg #friend_luck_list,.content-bg .rule{margin:0.3rem auto;}.margin-gap{margin-top:.3rem;}.padding-no-gap{padding-top:0;}
+  </style> -->
+</head>
+<body style="background: rgb(252, 229, 159);">
+  <div class="wrapper">
+    <div class="t-banner">
+	  <a class="banner-img" href="readme.html">
+	    <img src="http://p0.meituan.net/coupon/abd73d7970e4d35fc01485bdc5e1d6ea78462.png.webp" alt>
+	  </a>
+	</div>
+    <div class="content-bg" id="j-fetch" style="">
+        <section id="j-fetch-inner" class="content1">
+            <div class="opr">
+                <input id="phone-input" type="tel" class="borderradius-3" placeholder="请输入您的手机号" maxlength="11">
+
+                <div id="capture-tip" class="capture-tip"></div>
+                <input id="capture-btn" class="combtn borderradius-3" type="button" value="立即领取" style="border: 0px;background: rgb(255, 63, 38);">
+            </div>
+        </section>
+    </div>
+	<div class="content3 content-bg margin-gap" style="display: block;">
+        <section class="rule">
+            <h4 class="sec-sub-title">活动规则</h4>
+            <ul class="act-rules">
+			<li>1.下单即可分享红包给小伙伴</li>
+			<li></li>
+			<li>2.每个链接仅限20人领取</li>
+			<li></li>
+			<li>3.每个链接会按领取顺序随机发放一个大额红包</li>
+			<li></li>
+			<li>4.每人每天仅限领取5次</li>
+			<li></li>
+			<li>5.红包仅限在线支付使用，且收餐人手机号、领取红包时输入的手机号和账号中的手机号需为同一手机号</li>
+			<li></li>
+			<li>6.其他未尽事宜，请咨询客服</li>
+			<li></li>
+			</ul>
+        </section>
+    </div>
+</body>
+
+</html>
