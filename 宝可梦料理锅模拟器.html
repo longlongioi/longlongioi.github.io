@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="GB2312">
-		<title>±¦¿ÉÃÎÁÏÀí¹øÄ£ÄâÆ÷</title>
+		<meta charset="UTF-8">
+		<title>å®å¯æ¢¦æ–™ç†é”…æ¨¡æ‹Ÿå™¨</title>
 		<style type="text/css">
 			#div1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
 			position:relative;
@@ -122,50 +122,50 @@
 			function getpoint(guo)
 			{
 				switch (guo) {
-					case "Ð¡ºì":
+					case "å°çº¢":
 						red++;
 						soft++;
 						mushroom++;
 						break;
-					case "´óºì":
+					case "å¤§çº¢":
 						red++;
 						soft++;
 						plant++;
 						break;
-					case "Ð¡À¶":
+					case "å°è“":
 						blue++;
 						soft++;
 						sugar++;
 						break;
-					case "´óÀ¶":
+					case "å¤§è“":
 						blue++;
 						hard++;
 						mineral++;
 						break;
-					case "Ð¡»Æ":
+					case "å°é»„":
 						yellow++;
 						hard++;
 						plant++;
 						break;
-					case "´ó»Æ":
+					case "å¤§é»„":
 						yellow++;
 						soft++;
 						sugar++;
 						break;
-					case "Ð¡»Ò":
+					case "å°ç°":
 						gray++;
 						hard++;
 						mineral++;
 						break;
-					case "´ó»Ò":
+					case "å¤§ç°":
 						gray++;
 						soft++;
 						mushroom++;
 						break;
-					case  "Ð¡²Ê":
+					case  "å°å½©":
 						rainbow++;	
 						break;
-					case  "´ó²Ê":
+					case  "å¤§å½©":
 						shell++;
 						break;
 				}
@@ -183,41 +183,41 @@
 				getpoint(guo5);
 				
 				if(shell>=1)
-					alert("ÕäÆæ");
+					alert("çå¥‡");
 				else if(red>=4)
-					alert("ºì");
+					alert("çº¢");
 				else if(blue>=4)
-					alert("À¶");
+					alert("è“");
 				else if(yellow>=4)
-					alert("»Æ");
+					alert("é»„");
 				else if(gray>=4)
-					alert("»Ò");
+					alert("ç°");
 				else if(soft>=4 && blue>=3)
-					alert("Ë®");
+					alert("æ°´");
 				else if(sugar>=3 && gray>=2)
-					alert("Ò»°ã");
+					alert("ä¸€èˆ¬");
 				else if(mushroom>=4 && soft>=3)
-					alert("¶¾");
+					alert("æ¯’");
 				else if(soft>=3 && mineral>=2)
-					alert("µØÃæ");
+					alert("åœ°é¢");
 				else if(plant>=4 && soft>=2)
-					alert("²Ý");
+					alert("è‰");
 				else if(sugar>=4 && yellow>=3)
-					alert("³æ");
+					alert("è™«");
 				else if(sugar>=3 && hard>=2)
-					alert("³¬ÄÜÁ¦");
+					alert("è¶…èƒ½åŠ›");
 				else if(hard>=4 && mineral>=2)
-					alert("ÑÒÊ¯");
+					alert("å²©çŸ³");
 				else if(mineral>=3 && plant>=2)
-					alert("·ÉÐÐ");
+					alert("é£žè¡Œ");
 				else if(mushroom>=3 && red>=2)
-					alert("»ð");
+					alert("ç«");
 				else if(soft>=3 && yellow>=3)
-					alert("µç");
+					alert("ç”µ");
 				else if(sugar>=3 && mushroom>=2)
-					alert("¸ñ¶·");
+					alert("æ ¼æ–—");
 				else 
-					alert("´óÔÓ»â");
+					alert("å¤§æ‚çƒ©");
 			
 
 				red=yellow=blue=gray=rainbow=shell=0;
@@ -231,7 +231,7 @@
 	</head>
 
 	<body>
-		<p>Çë°ÑÁÏÀíÍÏ·Åµ½¾ØÐÎÖÐ£º</p>
+		<p>è¯·æŠŠæ–™ç†æ‹–æ”¾åˆ°çŸ©å½¢ä¸­ï¼š</p>
 
 		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 			<p id="demo1"></p>
@@ -249,37 +249,37 @@
 			<p id="demo5"></p>
 		</div>
 		<div class="bag1">
-			<p ondragstart="drag(event)" draggable="true" id="bag1">Ð¡ºì</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag1">å°çº¢</p>
 		</div>
 		<div class="bag2">
-			<p ondragstart="drag(event)" draggable="true" id="bag2">´óºì</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag2">å¤§çº¢</p>
 		</div>
 		<div class="bag3">
-			<p ondragstart="drag(event)" draggable="true" id="bag3">Ð¡À¶</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag3">å°è“</p>
 		</div>
 		<div class="bag4">
-			<p ondragstart="drag(event)" draggable="true" id="bag4">´óÀ¶</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag4">å¤§è“</p>
 		</div>
 		<div class="bag5">
-			<p ondragstart="drag(event)" draggable="true" id="bag5">Ð¡»Æ</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag5">å°é»„</p>
 		</div>
 		<div class="bag6">
-			<p ondragstart="drag(event)" draggable="true" id="bag6">´ó»Æ</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag6">å¤§é»„</p>
 		</div>
 		<div class="bag7">
-			<p ondragstart="drag(event)" draggable="true" id="bag7">Ð¡»Ò</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag7">å°ç°</p>
 		</div>
 		<div class="bag8">
-			<p ondragstart="drag(event)" draggable="true" id="bag8">´ó»Ò</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag8">å¤§ç°</p>
 		</div>
 		<div class="bag9">
-			<p ondragstart="drag(event)" draggable="true" id="bag9">Ð¡²Ê</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag9">å°å½©</p>
 		</div>
 		<div class="bag10">
-			<p ondragstart="drag(event)" draggable="true" id="bag10">´ó²Ê</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag10">å¤§å½©</p>
 		</div>
 		
-		<button id="cook" onclick="myFunction()">Åëâ¿</button>
+		<button id="cook" onclick="myFunction()">çƒ¹é¥ª</button>
 	</body>
 
 
