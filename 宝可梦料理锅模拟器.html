@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="GB2312">
+		<title>宝可梦料理锅模拟器</title>
+		<style type="text/css">
+			#div1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			left:35px;}
+			#div2 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			left:110px;
+			top:-72px}
+			#div3 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			top:-70px}
+			#div4 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			left:75px;
+			top:-142px}
+			#div5 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			left:150px;
+			top:-214px}
+			.bag1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:300px;
+			top:52px}
+			.bag2 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:300px;
+			top:126px}
+			.bag3 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:380px;
+			top:52px}
+			.bag4 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:380px;
+			top:126px}
+			.bag5 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:460px;
+			top:52px}
+			.bag6 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:460px;
+			top:126px}
+			.bag7 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:540px;
+			top:52px}
+			.bag8 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:540px;
+			top:126px}
+			.bag9 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:620px;
+			top:52px}
+			.bag10 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:620px;
+			top:126px}
+			#cook{
+			position:absolute;
+			left:100px;
+			top:240px
+			}
+			p{
+				moz-user-select: -moz-none; 
+				-moz-user-select: none; 
+				-o-user-select:none; 
+				-khtml-user-select:none; 
+				-webkit-user-select:none; 
+				-ms-user-select:none; 
+				user-select:none;
+			}
+		</style>
+		<script type="text/javascript">
+			var red=yellow=blue=gray=rainbow=shell=0;
+			var mushroom=mineral=sugar=plant=0;
+			var soft=hard=0;
+			function getDiv(id){
+
+				var parentDiv=document.getElementById(id);
+				var childs=parentDiv.getElementsByTagName("p");
+				var div=null;
+				
+				for(var i=0;i<childs.length;i++){
+					alert("for");
+					alert(div[i].id);
+					if(div[i].id==null)
+						alert("if");
+						div=childs[i];
+
+				}
+				
+				return div
+
+			}
+			function allowDrop(ev)
+			{
+				ev.preventDefault();
+			}
+
+			function drag(ev)
+			{
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+
+			function drop(ev)
+			{
+				ev.preventDefault();
+				var data=ev.dataTransfer.getData("Text");
+				//ev.target.appendChild(document.getElementById(data));
+				if (ev.target.getElementsByTagName("p")[0] == undefined)
+					ev.target.innerHTML = document.getElementById(data).innerText;
+				ev.target.getElementsByTagName("p")[0].innerHTML = document.getElementById(data).innerText;
+								
+			}
+			function getpoint(guo)
+			{
+				switch (guo) {
+					case "小红":
+						red++;
+						soft++;
+						mushroom++;
+						break;
+					case "大红":
+						red++;
+						soft++;
+						plant++;
+						break;
+					case "小蓝":
+						blue++;
+						soft++;
+						sugar++;
+						break;
+					case "大蓝":
+						blue++;
+						hard++;
+						mineral++;
+						break;
+					case "小黄":
+						yellow++;
+						hard++;
+						plant++;
+						break;
+					case "大黄":
+						yellow++;
+						soft++;
+						sugar++;
+						break;
+					case "小灰":
+						gray++;
+						hard++;
+						mineral++;
+						break;
+					case "大灰":
+						gray++;
+						soft++;
+						mushroom++;
+						break;
+					case  "小彩":
+						rainbow++;	
+						break;
+					case  "大彩":
+						shell++;
+						break;
+				}
+			}
+			function myFunction() {
+				var guo1=document.getElementById("div1").getElementsByTagName("p")[0].innerHTML;
+				var guo2=document.getElementById("div2").getElementsByTagName("p")[0].innerHTML;
+				var guo3=document.getElementById("div3").getElementsByTagName("p")[0].innerHTML;
+				var guo4=document.getElementById("div4").getElementsByTagName("p")[0].innerHTML;
+				var guo5=document.getElementById("div5").getElementsByTagName("p")[0].innerHTML;
+				getpoint(guo1);
+				getpoint(guo2);
+				getpoint(guo3);
+				getpoint(guo4);
+				getpoint(guo5);
+				
+				if(shell>=1)
+					alert("珍奇");
+				else if(red>=4)
+					alert("红");
+				else if(blue>=4)
+					alert("蓝");
+				else if(yellow>=4)
+					alert("黄");
+				else if(gray>=4)
+					alert("灰");
+				else if(soft>=4 && blue>=3)
+					alert("水");
+				else if(sugar>=3 && gray>=2)
+					alert("一般");
+				else if(mushroom>=4 && soft>=3)
+					alert("毒");
+				else if(soft>=3 && mineral>=2)
+					alert("地面");
+				else if(plant>=4 && soft>=2)
+					alert("草");
+				else if(sugar>=4 && yellow>=3)
+					alert("虫");
+				else if(sugar>=3 && hard>=2)
+					alert("超能力");
+				else if(hard>=4 && mineral>=2)
+					alert("岩石");
+				else if(mineral>=3 && plant>=2)
+					alert("飞行");
+				else if(mushroom>=3 && red>=2)
+					alert("火");
+				else if(soft>=3 && yellow>=3)
+					alert("电");
+				else if(sugar>=3 && mushroom>=2)
+					alert("格斗");
+				else 
+					alert("大杂烩");
+			
+
+				red=yellow=blue=gray=rainbow=shell=0;
+				mushroom=mineral=sugar=plant=0;
+				soft=hard=0;
+							
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+		<p>请把料理拖放到矩形中：</p>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="demo1"></p>
+		</div>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="demo2"></p>
+		</div>
+		<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="demo3"></p>
+		</div>
+		<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="demo4"></p>
+		</div>
+		<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p id="demo5"></p>
+		</div>
+		<div class="bag1">
+			<p ondragstart="drag(event)" draggable="true" id="bag1">小红</p>
+		</div>
+		<div class="bag2">
+			<p ondragstart="drag(event)" draggable="true" id="bag2">大红</p>
+		</div>
+		<div class="bag3">
+			<p ondragstart="drag(event)" draggable="true" id="bag3">小蓝</p>
+		</div>
+		<div class="bag4">
+			<p ondragstart="drag(event)" draggable="true" id="bag4">大蓝</p>
+		</div>
+		<div class="bag5">
+			<p ondragstart="drag(event)" draggable="true" id="bag5">小黄</p>
+		</div>
+		<div class="bag6">
+			<p ondragstart="drag(event)" draggable="true" id="bag6">大黄</p>
+		</div>
+		<div class="bag7">
+			<p ondragstart="drag(event)" draggable="true" id="bag7">小灰</p>
+		</div>
+		<div class="bag8">
+			<p ondragstart="drag(event)" draggable="true" id="bag8">大灰</p>
+		</div>
+		<div class="bag9">
+			<p ondragstart="drag(event)" draggable="true" id="bag9">小彩</p>
+		</div>
+		<div class="bag10">
+			<p ondragstart="drag(event)" draggable="true" id="bag10">大彩</p>
+		</div>
+		
+		<button id="cook" onclick="myFunction()">烹饪</button>
+	</body>
+
+
+</html>
