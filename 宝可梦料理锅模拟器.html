@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html >
 	<head>
-		<meta charset="UTF-8">
-		<title>å®å¯æ¢¦æ–™ç†é”…æ¨¡æ‹Ÿå™¨</title>
+		<meta charset="GB2312">
+		<title>±¦¿ÉÃÎÁÏÀí¹øÄ£ÄâÆ÷</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<style type="text/css">
+			body {width:620px; height:350px;}
 			#div1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
 			position:relative;
 			left:35px;}
@@ -122,50 +124,50 @@
 			function getpoint(guo)
 			{
 				switch (guo) {
-					case "å°çº¢":
+					case "Ğ¡ºì":
 						red++;
 						soft++;
 						mushroom++;
 						break;
-					case "å¤§çº¢":
+					case "´óºì":
 						red++;
 						soft++;
 						plant++;
 						break;
-					case "å°è“":
+					case "Ğ¡À¶":
 						blue++;
 						soft++;
 						sugar++;
 						break;
-					case "å¤§è“":
+					case "´óÀ¶":
 						blue++;
 						hard++;
 						mineral++;
 						break;
-					case "å°é»„":
+					case "Ğ¡»Æ":
 						yellow++;
 						hard++;
 						plant++;
 						break;
-					case "å¤§é»„":
+					case "´ó»Æ":
 						yellow++;
 						soft++;
 						sugar++;
 						break;
-					case "å°ç°":
+					case "Ğ¡»Ò":
 						gray++;
 						hard++;
 						mineral++;
 						break;
-					case "å¤§ç°":
+					case "´ó»Ò":
 						gray++;
 						soft++;
 						mushroom++;
 						break;
-					case  "å°å½©":
+					case  "Ğ¡²Ê":
 						rainbow++;	
 						break;
-					case  "å¤§å½©":
+					case  "´ó²Ê":
 						shell++;
 						break;
 				}
@@ -183,41 +185,41 @@
 				getpoint(guo5);
 				
 				if(shell>=1)
-					alert("çå¥‡");
+					alert("ÕäÆæ");
 				else if(red>=4)
-					alert("çº¢");
+					alert("ºì");
 				else if(blue>=4)
-					alert("è“");
+					alert("À¶");
 				else if(yellow>=4)
-					alert("é»„");
+					alert("»Æ");
 				else if(gray>=4)
-					alert("ç°");
+					alert("»Ò");
 				else if(soft>=4 && blue>=3)
-					alert("æ°´");
+					alert("Ë®");
 				else if(sugar>=3 && gray>=2)
-					alert("ä¸€èˆ¬");
+					alert("Ò»°ã");
 				else if(mushroom>=4 && soft>=3)
-					alert("æ¯’");
+					alert("¶¾");
 				else if(soft>=3 && mineral>=2)
-					alert("åœ°é¢");
+					alert("µØÃæ");
 				else if(plant>=4 && soft>=2)
-					alert("è‰");
+					alert("²İ");
 				else if(sugar>=4 && yellow>=3)
-					alert("è™«");
+					alert("³æ");
 				else if(sugar>=3 && hard>=2)
-					alert("è¶…èƒ½åŠ›");
+					alert("³¬ÄÜÁ¦");
 				else if(hard>=4 && mineral>=2)
-					alert("å²©çŸ³");
+					alert("ÑÒÊ¯");
 				else if(mineral>=3 && plant>=2)
-					alert("é£è¡Œ");
+					alert("·ÉĞĞ");
 				else if(mushroom>=3 && red>=2)
-					alert("ç«");
+					alert("»ğ");
 				else if(soft>=3 && yellow>=3)
-					alert("ç”µ");
+					alert("µç");
 				else if(sugar>=3 && mushroom>=2)
-					alert("æ ¼æ–—");
+					alert("¸ñ¶·");
 				else 
-					alert("å¤§æ‚çƒ©");
+					alert("´óÔÓ»â");
 			
 
 				red=yellow=blue=gray=rainbow=shell=0;
@@ -225,13 +227,94 @@
 				soft=hard=0;
 							
 			}
+			var oW,oH;
+			//var block = document.getElementById("block");
+			var touches = 0;
+			// °ó¶¨touchstartÊÂ¼ş
+			addEventListener("touchstart", function(e) {
+			//console.log(e);
+			console.log('name',e.target.tagName);
+			console.log('name',e.target.innerText);
+			if (e.target.tagName != 'P' || e.target.innerText == 'Çë°ÑÁÏÀíÍÏ·Åµ½¾ØĞÎÖĞ£º')
+				return;
+			touches = e.touches[0];
+			block = e.target;
+			
+			console.log('Ä¿±ê',e.target.id);
+			console.log('´¥ÃşµãÏà¶Ôä¯ÀÀÆ÷´°¿ÚµÄÎ»ÖÃ',touches.clientX,touches.clientY);
+			console.log('blockÎ»ÖÃ',block.offsetLeft,block.offsetTop);
+			console.log('block¿í¸ß',block.offsetWidth,block.offsetHeight);
+			console.log('´¥ÃşµãÏà¶ÔÓÚÒ³ÃæµÄÎ»ÖÃ',touches.pageX,touches.pageY);
+			oW = touches.clientX - block.offsetLeft;
+			oH = touches.clientY - block.offsetTop;
+			block.style.position = "absolute";
+			//×èÖ¹Ò³ÃæµÄ»¬¶¯Ä¬ÈÏÊÂ¼ş
+			document.addEventListener("touchmove",defaultEvent,false);
+			},false)
+			
+			
+			addEventListener("touchmove", function(e) {
+			block = e.target;
+			console.log('name',e.target.tagName);
+			if (e.target.tagName != 'P' || e.target.innerText == 'Çë°ÑÁÏÀíÍÏ·Åµ½¾ØĞÎÖĞ£º')
+				return;
+			touches = e.touches[0];
+			var oLeft = touches.clientX - oW;
+			var oTop = touches.clientY - oH;
+			console.log('blockÎ»ÖÃ',block.offsetLeft,block.offsetTop);
+			console.log('block¿í¸ß',block.offsetWidth,block.offsetHeight);
+			console.log('Íâ¿ò¿í¸ß',document.documentElement.clientWidth,document.documentElement.clientWidth);
+			console.log('²»³¬³öµÄµÄ×ø±ê',document.documentElement.clientWidth - block.offsetWidth,document.documentElement.clientHeight - block.offsetHeight)
+			//if(oLeft < 0) {
+			//oLeft = 0;
+			//}else if(oLeft > document.documentElement.clientWidth - block.offsetWidth) {
+			//oLeft = (document.documentElement.clientWidth - block.offsetWidth);
+			//}
+			//if(oTop < 0) {
+			//oTop = 0;
+			//}else if(oTop > document.documentElement.clientHeight - block.offsetHeight) {
+			//oTop = (document.documentElement.clientHeight - block.offsetHeight);
+			//}
+			block.style.left = oLeft + "px";
+			block.style.top = oTop + "px";
+			},false);
 
+			addEventListener("touchend",function(e) {
+			if (e.target.tagName != 'P' || e.target.innerText == 'Çë°ÑÁÏÀíÍÏ·Åµ½¾ØĞÎÖĞ£º')
+				return;
+			var guo1 = document.getElementById("div1");
+			var guo2 = document.getElementById("div2");
+			var guo3 = document.getElementById("div3");
+			var guo4 = document.getElementById("div4");
+			var guo5 = document.getElementById("div5");
+			
+			if((touches.clientX >= guo1.offsetLeft && touches.clientX <= (guo1.offsetLeft + guo1.offsetWidth)) && (touches.clientY >= guo1.offsetTop && touches.clientY <= (guo1.offsetTop + guo1.offsetHeight)))
+				guo1.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+			
+			if((touches.clientX >= guo2.offsetLeft && touches.clientX <= (guo2.offsetLeft + guo2.offsetWidth)) && (touches.clientY >= guo2.offsetTop && touches.clientY <= (guo2.offsetTop + guo2.offsetHeight)))
+				guo2.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo3.offsetLeft && touches.clientX <= (guo3.offsetLeft + guo3.offsetWidth)) && (touches.clientY >= guo3.offsetTop && touches.clientY <= (guo3.offsetTop + guo3.offsetHeight)))
+				guo3.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo4.offsetLeft && touches.clientX <= (guo4.offsetLeft + guo4.offsetWidth)) && (touches.clientY >= guo4.offsetTop && touches.clientY <= (guo4.offsetTop + guo4.offsetHeight)))
+				guo4.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
+				guo5.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+				
+			block.style.position = '';	
+			document.removeEventListener("touchmove",defaultEvent,false);
+			},false);
+			function defaultEvent(e) {
+			e.preventDefault();
+			}
 		</script>
 
 	</head>
 
 	<body>
-		<p>è¯·æŠŠæ–™ç†æ‹–æ”¾åˆ°çŸ©å½¢ä¸­ï¼š</p>
+		<p>Çë°ÑÁÏÀíÍÏ·Åµ½¾ØĞÎÖĞ£º</p>
 
 		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
 			<p id="demo1"></p>
@@ -249,37 +332,37 @@
 			<p id="demo5"></p>
 		</div>
 		<div class="bag1">
-			<p ondragstart="drag(event)" draggable="true" id="bag1">å°çº¢</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag1">Ğ¡ºì</p>
 		</div>
 		<div class="bag2">
-			<p ondragstart="drag(event)" draggable="true" id="bag2">å¤§çº¢</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag2">´óºì</p>
 		</div>
 		<div class="bag3">
-			<p ondragstart="drag(event)" draggable="true" id="bag3">å°è“</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag3">Ğ¡À¶</p>
 		</div>
 		<div class="bag4">
-			<p ondragstart="drag(event)" draggable="true" id="bag4">å¤§è“</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag4">´óÀ¶</p>
 		</div>
 		<div class="bag5">
-			<p ondragstart="drag(event)" draggable="true" id="bag5">å°é»„</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag5">Ğ¡»Æ</p>
 		</div>
 		<div class="bag6">
-			<p ondragstart="drag(event)" draggable="true" id="bag6">å¤§é»„</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag6">´ó»Æ</p>
 		</div>
 		<div class="bag7">
-			<p ondragstart="drag(event)" draggable="true" id="bag7">å°ç°</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag7">Ğ¡»Ò</p>
 		</div>
 		<div class="bag8">
-			<p ondragstart="drag(event)" draggable="true" id="bag8">å¤§ç°</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag8">´ó»Ò</p>
 		</div>
 		<div class="bag9">
-			<p ondragstart="drag(event)" draggable="true" id="bag9">å°å½©</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag9">Ğ¡²Ê</p>
 		</div>
 		<div class="bag10">
-			<p ondragstart="drag(event)" draggable="true" id="bag10">å¤§å½©</p>
+			<p ondragstart="drag(event)" draggable="true" id="bag10">´ó²Ê</p>
 		</div>
 		
-		<button id="cook" onclick="myFunction()">çƒ¹é¥ª</button>
+		<button id="cook" onclick="myFunction()">Åëâ¿</button>
 	</body>
 
 
