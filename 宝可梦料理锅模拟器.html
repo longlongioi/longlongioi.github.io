@@ -5,7 +5,7 @@
 		<title>宝可梦料理锅模拟器</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<style type="text/css">
-			body {width:620px; height:350px;zoom:0.54;}
+			body {width:700px; height:350px;zoom:1;}
 			#div1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
 			position:relative;
 			left:35px;}
@@ -233,38 +233,37 @@
 			// 绑定touchstart事件
 			addEventListener("touchstart", function(e) {
 			//console.log(e);
-			console.log('name',e.target.tagName);
-			console.log('name',e.target.innerText);
+			
 			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
 				return;
+			//阻止页面的滑动默认事件
+			document.addEventListener("touchmove",defaultEvent,{ passive: false });				
 			touches = e.touches[0];
 			block = e.target;
 			
-			console.log('目标',e.target.id);
-			console.log('触摸点相对浏览器窗口的位置',touches.clientX,touches.clientY);
-			console.log('block位置',block.offsetLeft,block.offsetTop);
-			console.log('block宽高',block.offsetWidth,block.offsetHeight);
-			console.log('触摸点相对于页面的位置',touches.pageX,touches.pageY);
+			//console.log('目标',e.target.id);
+			//console.log('触摸点相对浏览器窗口的位置',touches.clientX,touches.clientY);
+			//console.log('block位置',block.offsetLeft,block.offsetTop);
+			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
+			//console.log('触摸点相对于页面的位置',touches.pageX,touches.pageY);
 			oW = touches.clientX - block.offsetLeft;
 			oH = touches.clientY - block.offsetTop;
-			block.style.position = "absolute";
-			//阻止页面的滑动默认事件
-			document.addEventListener("touchmove",defaultEvent,false);
-			},false)
+
+			},false )
 			
 			
 			addEventListener("touchmove", function(e) {
 			block = e.target;
-			console.log('name',e.target.tagName);
 			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
 				return;
 			touches = e.touches[0];
 			var oLeft = touches.clientX - oW;
 			var oTop = touches.clientY - oH;
-			console.log('block位置',block.offsetLeft,block.offsetTop);
-			console.log('block宽高',block.offsetWidth,block.offsetHeight);
-			console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
-			console.log('不超出的的坐标',document.documentElement.clientWidth - block.offsetWidth,document.documentElement.clientHeight - block.offsetHeight)
+			//console.log('block位置',block.offsetLeft,block.offsetTop);
+			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
+			//console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
+			//console.log('不超出的的坐标',document.documentElement.clientWidth - block.offsetWidth,document.documentElement.clientHeight - block.offsetHeight)
+			console.log('鼠标位置',touches.clientX,touches.clientY);
 			//if(oLeft < 0) {
 			//oLeft = 0;
 			//}else if(oLeft > document.documentElement.clientWidth - block.offsetWidth) {
@@ -277,7 +276,46 @@
 			//}
 			block.style.left = oLeft + "px";
 			block.style.top = oTop + "px";
-			},false);
+			block.style.position = "absolute";
+			var guo1 = document.getElementById("div1");
+			var guo2 = document.getElementById("div2");
+			var guo3 = document.getElementById("div3");
+			var guo4 = document.getElementById("div4");
+			var guo5 = document.getElementById("div5");
+			
+			guo1.style.left = guo1.offsetLeft + "px";
+			console.log(guo1.offsetLeft);
+			console.log(guo1.offsetTop);
+			guo1.style.top = guo1.offsetTop + "px";
+			
+			console.log(guo2.offsetLeft);
+			console.log(guo2.offsetTop);
+			guo2.style.left = guo2.offsetLeft + 'px';
+			guo2.style.top = guo2.offsetTop + 'px';	
+			
+					
+			console.log(guo3.offsetLeft);
+			console.log(guo3.offsetTop);
+			guo3.style.left = guo3.offsetLeft + 'px';
+			guo3.style.top = guo3.offsetTop + 'px';
+			
+			
+			console.log(guo4.offsetLeft);
+			console.log(guo4.offsetTop);
+			guo4.style.left = guo4.offsetLeft + 'px';
+			guo4.style.top = guo4.offsetTop + 'px';
+			
+			
+			console.log(guo5.offsetLeft);
+			console.log(guo5.offsetTop);
+			guo5.style.left = guo5.offsetLeft + 'px';
+			guo5.style.top = guo5.offsetTop + 'px';
+			guo1.style.position = 'fixed';
+			guo2.style.position = 'fixed';
+			guo3.style.position = 'fixed';
+			guo4.style.position = 'fixed';
+			guo5.style.position = 'fixed';
+			},false );
 
 			addEventListener("touchend",function(e) {
 			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
@@ -287,6 +325,26 @@
 			var guo3 = document.getElementById("div3");
 			var guo4 = document.getElementById("div4");
 			var guo5 = document.getElementById("div5");
+
+			<!-- console.log(guo1.offsetLeft); -->
+			<!-- console.log(guo1.offsetTop); -->
+
+
+			<!-- console.log(guo2.offsetLeft); -->
+			<!-- console.log(guo2.offsetTop); -->
+
+
+			<!-- console.log(guo3.offsetLeft); -->
+			<!-- console.log(guo3.offsetTop); -->
+
+			
+
+			<!-- console.log(guo4.offsetLeft); -->
+			<!-- console.log(guo4.offsetTop); -->
+
+
+			<!-- console.log(guo5.offsetLeft); -->
+			<!-- console.log(guo5.offsetTop); -->
 			
 			if((touches.clientX >= guo1.offsetLeft && touches.clientX <= (guo1.offsetLeft + guo1.offsetWidth)) && (touches.clientY >= guo1.offsetTop && touches.clientY <= (guo1.offsetTop + guo1.offsetHeight)))
 				guo1.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
@@ -304,8 +362,13 @@
 				guo5.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
 				
 			block.style.position = '';	
-			document.removeEventListener("touchmove",defaultEvent,false);
-			},false);
+			guo1.style.position = 'absolute';
+			guo2.style.position = 'absolute';
+			guo3.style.position = 'absolute';
+			guo4.style.position = 'absolute';
+			guo5.style.position = 'absolute';
+			document.removeEventListener("touchmove",defaultEvent,{ passive: false });
+			},false );
 			function defaultEvent(e) {
 			e.preventDefault();
 			}
@@ -313,7 +376,7 @@
 
 	</head>
 
-	<body>
+	<body class="webpBack" >
 		<p>请把料理拖放到矩形中：</p>
 
 		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
