@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<script src="layer-v3.1.1\layer\mobile\layer.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script> 
+		<meta charset="utf-8">
+		<title>宝可梦料理锅模拟器</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<style type="text/css">
+			body {width:700px; height:350px;zoom:1;}
+			#div1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			background-color:white;
+			text-align: center; 
+			z-index:1;
+			position:relative;
+			left:35px;}
+			#div2 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			text-align: center; 
+			background-color:white;
+			z-index:1;
+			left:110px;
+			top:-72px}
+			#div3 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			text-align: center; 
+			background-color:white;
+			z-index:1;
+			top:-70px}
+			#div4 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			background-color:white;
+			text-align: center; 
+			z-index:1;
+			left:75px;
+			top:-142px}
+			#div5 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:relative;
+			background-color:white;
+			text-align: center; 
+			z-index:1;
+			left:150px;
+			top:-214px}
+			.bag1 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:300px;
+			top:52px}
+			.bag2 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:300px;
+			top:126px}
+			.bag3 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:380px;
+			top:52px}
+			.bag4 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:380px;
+			top:126px}
+			.bag5 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:460px;
+			text-align: center; 
+			top:52px}
+			.bag6 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			left:460px;
+			text-align: center; 
+			top:126px}
+			.bag7 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:540px;
+			top:52px}
+			.bag8 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:540px;
+			top:126px}
+			.bag9 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:620px;
+			top:52px}
+			.bag10 {width:50px; height:50px;padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:620px;
+			top:126px}
+			.list {padding:10px;border:1px solid #aaaaaa;
+			position:absolute;
+			text-align: center; 
+			left:300px;
+			top:250px}
+			#cook{
+			position:absolute;
+			left:100px;
+			top:240px
+			}
+			p{
+				z-index:2;
+				moz-user-select: -moz-none; 
+				-moz-user-select: none; 
+				-o-user-select:none; 
+				-khtml-user-select:none; 
+				-webkit-user-select:none; 
+				-ms-user-select:none; 
+				user-select:none;
+			}
+			img{
+				display: inline-block;
+				vertical-align: middle;
+				z-index:2;
+				moz-user-select: -moz-none; 
+				-moz-user-select: none; 
+				-o-user-select:none; 
+				-khtml-user-select:none; 
+				-webkit-user-select:none; 
+				-ms-user-select:none; 
+				user-select:none;
+			}
+		</style>
+		<script type="text/javascript">
+			var red=yellow=blue=gray=rainbow=shell=0;
+			var mushroom=mineral=sugar=plant=0;
+			var soft=hard=0;
+			function getDiv(id){
+
+				var parentDiv=document.getElementById(id);
+				var childs=parentDiv.getElementsByTagName("p");
+				var div=null;
+				
+				for(var i=0;i<childs.length;i++){
+					alert("for");
+					alert(div[i].id);
+					if(div[i].id==null)
+						alert("if");
+						div=childs[i];
+
+				}
+				
+				return div
+
+			}
+			function allowDrop(ev)
+			{
+				ev.preventDefault();
+			}
+
+			function drag(ev)
+			{
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+
+			function drop(ev)
+			{
+				ev.preventDefault();
+				var data=ev.dataTransfer.getData("Text");
+				//ev.target.appendChild(document.getElementById(data));
+				if (ev.target.getElementsByTagName("p")[0] == undefined)
+					<!-- ev.target.innerHTML = document.getElementById(data).innerText; -->
+					console.log(document.getElementById(data));
+					ev.target.setAttribute('src', document.getElementById(data).getAttribute("src"));
+					ev.target.setAttribute('alt', document.getElementById(data).getAttribute("alt"));
+				<!-- ev.target.getElementsByTagName("p")[0].innerHTML = document.getElementById(data).innerText; -->
+				console.log(document.getElementById(data).getAttribute("src"));
+				ev.target.getElementsByTagName("img")[0].setAttribute('src', document.getElementById(data).getAttribute("src"));
+				ev.target.getElementsByTagName("img")[0].setAttribute('alt', document.getElementById(data).getAttribute("alt"));
+								
+			}
+			function getpoint(guo)
+			{
+				switch (guo) {
+					case "小红":
+						red++;
+						soft++;
+						mushroom++;
+						break;
+					case "大红":
+						red++;
+						soft++;
+						plant++;
+						break;
+					case "小蓝":
+						blue++;
+						soft++;
+						sugar++;
+						break;
+					case "大蓝":
+						blue++;
+						hard++;
+						mineral++;
+						break;
+					case "小黄":
+						yellow++;
+						hard++;
+						plant++;
+						break;
+					case "大黄":
+						yellow++;
+						soft++;
+						sugar++;
+						break;
+					case "小灰":
+						gray++;
+						hard++;
+						mineral++;
+						break;
+					case "大灰":
+						gray++;
+						soft++;
+						mushroom++;
+						break;
+					case  "小彩":
+						rainbow++;	
+						break;
+					case  "大彩":
+						shell++;
+						break;
+				}
+			}
+			function myFunction() {
+				var guo1=document.getElementById("div1").getElementsByTagName("img")[0].getAttribute("alt");
+				var guo2=document.getElementById("div2").getElementsByTagName("img")[0].getAttribute("alt");
+				var guo3=document.getElementById("div3").getElementsByTagName("img")[0].getAttribute("alt");
+				var guo4=document.getElementById("div4").getElementsByTagName("img")[0].getAttribute("alt");
+				var guo5=document.getElementById("div5").getElementsByTagName("img")[0].getAttribute("alt");
+				console.log(red,yellow,blue,gray,rainbow,shell,mushroom,mineral,sugar,plant,soft,hard);
+				console.log(guo1);
+				getpoint(guo1);
+				getpoint(guo2);
+				getpoint(guo3);
+				getpoint(guo4);
+				getpoint(guo5);
+				console.log(red,yellow,blue,gray,rainbow,shell,mushroom,mineral,sugar,plant,soft,hard);
+				if(shell>=1)
+					alert("珍奇");
+				else if(red>=4)
+					alert("红");
+				else if(blue>=4)
+					alert("蓝");
+				else if(yellow>=4)
+					alert("黄");
+				else if(gray>=4)
+					alert("灰");
+				else if(soft>=4 && blue>=3)
+					alert("水");
+				else if(sugar>=3 && gray>=2)
+					alert("一般");
+				else if(mushroom>=4 && soft>=3)
+					alert("毒");
+				else if(soft>=3 && mineral>=2)
+					alert("地面");
+				else if(plant>=4 && soft>=2)
+					alert("草");
+				else if(sugar>=4 && yellow>=3)
+					alert("虫");
+				else if(sugar>=3 && hard>=2)
+					alert("超能力");
+				else if(hard>=4 && mineral>=2)
+					alert("岩石");
+				else if(mineral>=3 && plant>=2)
+					alert("飞行");
+				else if(mushroom>=3 && red>=2)
+					alert("火");
+				else if(soft>=3 && yellow>=3)
+					alert("电");
+				else if(sugar>=3 && mushroom>=2)
+					alert("格斗");
+				else 
+					alert("大杂烩");
+					
+				red=yellow=blue=gray=rainbow=shell=mushroom=mineral=sugar=plant=soft=hard=0;
+				layer.msg('hello'); 
+				<!-- console.log(red,yellow,blue,gray,rainbow,shell,mushroom,mineral,sugar,plant,soft,hard);	 -->
+				
+
+				<!-- red=0; -->
+				<!-- yellow=0; -->
+				<!-- blue=0; -->
+				<!-- gray=0; -->
+				<!-- rainbow=0; -->
+				<!-- shell=0; -->
+				<!-- mushroom=0; -->
+				<!-- mineral=0; -->
+				<!-- sugar=0; -->
+				<!-- plant=0; -->
+				<!-- soft=0; -->
+				<!-- hard=0; -->
+				
+						
+			}
+			var oW,oH;
+			//var block = document.getElementById("block");
+			var touches = 0;
+			// 绑定touchstart事件
+			addEventListener("touchstart", function(e) {
+			//console.log(e);
+			
+			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+				return;
+			//阻止页面的滑动默认事件
+			document.addEventListener("touchmove",defaultEvent,{ passive: false });				
+			touches = e.touches[0];
+			var block = e.target;
+			
+			//console.log('目标',e.target.id);
+			//console.log('触摸点相对浏览器窗口的位置',touches.clientX,touches.clientY);
+			//console.log('block位置',block.offsetLeft,block.offsetTop);
+			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
+			//console.log('触摸点相对于页面的位置',touches.pageX,touches.pageY);
+			oW = touches.clientX - block.parentElement.offsetLeft - block.offsetLeft;
+			oH = touches.clientY - block.parentElement.offsetTop - block.offsetTop;
+			<!-- console.log('p位置',block.offsetLeft,'-',oW,block.offsetTop,'-',oH); -->
+			<!-- console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop); -->
+			},false )
+			
+			
+			addEventListener("touchmove", function(e) {
+			var block = e.target;
+			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+				return;
+			touches = e.touches[0];
+			var oLeft = touches.clientX - block.parentElement.offsetLeft - oW;
+			var oTop = touches.clientY - block.parentElement.offsetTop - oH - 16;
+			//console.log('block位置',block.offsetLeft,block.offsetTop);
+			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
+			//console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
+			//console.log('不超出的的坐标',document.documentElement.clientWidth - block.offsetWidth,document.documentElement.clientHeight - block.offsetHeight)
+			<!-- console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop); -->
+			<!-- console.log('调整位置',oLeft,oTop); -->
+			//if(oLeft < 0) {
+			//oLeft = 0;
+			//}else if(oLeft > document.documentElement.clientWidth - block.offsetWidth) {
+			//oLeft = (document.documentElement.clientWidth - block.offsetWidth);
+			//}
+			//if(oTop < 0) {
+			//oTop = 0;
+			//}else if(oTop > document.documentElement.clientHeight - block.offsetHeight) {
+			//oTop = (document.documentElement.clientHeight - block.offsetHeight);
+			//}
+			block.style.position = "absolute";
+			block.style.left = oLeft + "px";
+			block.style.top = oTop + "px";
+			
+			
+			<!-- block.style.position = "fixed"; -->
+			<!-- block.style.left=touches.clientX - block.offsetWidth/2 + 'px'; -->
+			<!-- block.style.top=touches.clientY - block.offsetHeight*2 + 'px';	 -->
+			
+			console.log(block.style.left,block.style.top)
+			
+			var guo1 = document.getElementById("div1");
+			var guo2 = document.getElementById("div2");
+			var guo3 = document.getElementById("div3");
+			var guo4 = document.getElementById("div4");
+			var guo5 = document.getElementById("div5");
+			
+			guo1.style.left = guo1.offsetLeft + "px";
+			console.log(guo1.offsetLeft);
+			console.log(guo1.offsetTop);
+			guo1.style.top = guo1.offsetTop + "px";
+			
+			console.log(guo2.offsetLeft);
+			console.log(guo2.offsetTop);
+			guo2.style.left = guo2.offsetLeft + 'px';
+			guo2.style.top = guo2.offsetTop + 'px';	
+			
+					
+			console.log(guo3.offsetLeft);
+			console.log(guo3.offsetTop);
+			guo3.style.left = guo3.offsetLeft + 'px';
+			guo3.style.top = guo3.offsetTop + 'px';
+			
+			
+			console.log(guo4.offsetLeft);
+			console.log(guo4.offsetTop);
+			guo4.style.left = guo4.offsetLeft + 'px';
+			guo4.style.top = guo4.offsetTop + 'px';
+			
+			
+			console.log(guo5.offsetLeft);
+			console.log(guo5.offsetTop);
+			guo5.style.left = guo5.offsetLeft + 'px';
+			guo5.style.top = guo5.offsetTop + 'px';
+			guo1.style.position = 'fixed';
+			guo2.style.position = 'fixed';
+			guo3.style.position = 'fixed';
+			guo4.style.position = 'fixed';
+			guo5.style.position = 'fixed';
+			},false );
+
+			addEventListener("touchend",function(e) {
+			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+				return;
+			var guo1 = document.getElementById("div1");			
+			var guo2 = document.getElementById("div2");
+			var guo3 = document.getElementById("div3");
+			var guo4 = document.getElementById("div4");
+			var guo5 = document.getElementById("div5");
+
+			<!-- console.log(guo1.offsetLeft); -->
+			<!-- console.log(guo1.offsetTop); -->
+
+
+			<!-- console.log(guo2.offsetLeft); -->
+			<!-- console.log(guo2.offsetTop); -->
+
+
+			<!-- console.log(guo3.offsetLeft); -->
+			<!-- console.log(guo3.offsetTop); -->
+
+			
+
+			<!-- console.log(guo4.offsetLeft); -->
+			<!-- console.log(guo4.offsetTop); -->
+
+
+			<!-- console.log(guo5.offsetLeft); -->
+			<!-- console.log(guo5.offsetTop); -->
+			
+			if((touches.clientX >= guo1.offsetLeft && touches.clientX <= (guo1.offsetLeft + guo1.offsetWidth)) && (touches.clientY >= guo1.offsetTop && touches.clientY <= (guo1.offsetTop + guo1.offsetHeight)))
+				guo1.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+			
+			if((touches.clientX >= guo2.offsetLeft && touches.clientX <= (guo2.offsetLeft + guo2.offsetWidth)) && (touches.clientY >= guo2.offsetTop && touches.clientY <= (guo2.offsetTop + guo2.offsetHeight)))
+				guo2.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo3.offsetLeft && touches.clientX <= (guo3.offsetLeft + guo3.offsetWidth)) && (touches.clientY >= guo3.offsetTop && touches.clientY <= (guo3.offsetTop + guo3.offsetHeight)))
+				guo3.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo4.offsetLeft && touches.clientX <= (guo4.offsetLeft + guo4.offsetWidth)) && (touches.clientY >= guo4.offsetTop && touches.clientY <= (guo4.offsetTop + guo4.offsetHeight)))
+				guo4.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+
+			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
+				guo5.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
+				
+			block.style.position = '';
+			console.log('touchend',window.getComputedStyle(guo1).getPropertyValue("position"));	
+			//alert(window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed');
+			if (window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed')
+			{
+				<!-- guo1.setAttribute('style', 'position:absolute'); -->
+				<!-- guo2.setAttribute('style', 'position:absolute'); -->
+				<!-- guo3.setAttribute('style', 'position:absolute'); -->
+				<!-- guo4.setAttribute('style', 'position:absolute'); -->
+				<!-- guo5.setAttribute('style', 'position:absolute'); -->
+				guo1.style.position = 'absolute';
+				guo2.style.position = 'absolute';
+				guo3.style.position = 'absolute';
+				guo4.style.position = 'absolute';
+				guo5.style.position = 'absolute';
+			}
+			document.removeEventListener("touchmove",defaultEvent,{ passive: false });
+			},false );
+			function defaultEvent(e) {
+			e.preventDefault();
+			}
+		</script>
+
+	</head>
+
+	<body class="webpBack" >
+		<p>请把料理拖放到矩形中：</p>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <p id="demo1"></p> -->
+			<img />
+		</div>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <p id="demo2"></p> -->
+			<img />
+		</div>
+		<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <p id="demo3"></p> -->
+			<img />
+		</div>
+		<div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <p id="demo4"></p> -->
+			<img />
+		</div>
+		<div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <p id="demo5"></p> -->
+			<img />
+		</div>
+		<div class="bag1">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag1"></p> -->
+			<img src="pokemon/小红.jpg"  alt="小红" id="bag1" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag2">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag2">大红</p> -->
+			<img src="pokemon/大红.jpg"  alt="大红" id="bag2" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag3">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag3">小蓝</p> -->
+			<img src="pokemon/小蓝.jpg"  alt="小蓝" id="bag3" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag4">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag4">大蓝</p> -->
+			<img src="pokemon/大蓝.jpg"  alt="大蓝" id="bag4" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag5">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag5">小黄</p> -->
+			<img src="pokemon/小黄.jpg"  alt="小黄" id="bag5" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag6">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag6">大黄</p> -->
+			<img src="pokemon/大黄.jpg"  alt="大黄" id="bag6" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag7">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag7">小灰</p> -->
+			<img src="pokemon/小灰.jpg"  alt="小灰" id="bag7" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag8">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag8">大灰</p> -->
+			<img src="pokemon/大灰.jpg"  alt="大灰" id="bag8" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag9">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag9">小彩</p> -->
+			<img src="pokemon/小彩.jpg"  alt="小彩" id="bag9" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="bag10">
+			<!-- <p ondragstart="drag(event)" draggable="true" id="bag10">大彩</p> -->
+			<img src="pokemon/大彩.jpg"  alt="大彩" id="bag10" ondragstart="drag(event)" draggable="true" />
+		</div>
+		<div class="list">
+			<p ondragstart="drag(event)" draggable="true" id="bag10">
+				贝壳>=1					珍奇<br/>
+				红>=4					红<br/>	
+				blue>=4					蓝<br/>
+				yellow>=4				黄<br/>
+				gray>=4					灰<br/>
+				soft>=4 && blue>=3		水<br/>
+				sugar>=3 && gray>=2 	一般<br/>
+				mushroom>=4 && soft>=3	毒<br/>
+				soft>=3 && mineral>=2	地面<br/>
+				plant>=4 && soft>=2		草<br/>
+				sugar>=4 && yellow>=3	虫<br/>
+				sugar>=3 && hard>=2		超能力<br/>
+				hard>=4 && mineral>=2	岩石<br/>
+				mineral>=3 && plant>=2	飞行<br/>
+				mushroom>=3 && red>=2	火<br/>
+				soft>=3 && yellow>=3	电<br/>
+				sugar>=3 && mushroom>=2	格斗<br/>
+				else 					大杂烩<br/>
+				</p>
+			<!-- <img src="pokemon/大彩.jpg"  alt="大彩" id="bag10" ondragstart="drag(event)" draggable="true" /> -->
+		</div>
+		
+		<button id="cook" onclick="myFunction()">烹饪</button>
+	</body>
+
+
+</html>
