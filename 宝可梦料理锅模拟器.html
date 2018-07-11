@@ -257,9 +257,10 @@
 			//console.log('block位置',block.offsetLeft,block.offsetTop);
 			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
 			//console.log('触摸点相对于页面的位置',touches.pageX,touches.pageY);
-			oW = touches.clientX - block.offsetLeft;
-			oH = touches.clientY - block.offsetTop;
-
+			oW = touches.clientX - block.parentElement.offsetLeft - block.offsetLeft;
+			oH = touches.clientY - block.parentElement.offsetTop - block.offsetTop;
+			<!-- console.log('p位置',block.offsetLeft,'-',oW,block.offsetTop,'-',oH); -->
+			<!-- console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop); -->
 			},false )
 			
 			
@@ -268,13 +269,14 @@
 			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
 				return;
 			touches = e.touches[0];
-			var oLeft = touches.clientX - oW;
-			var oTop = touches.clientY - oH;
+			var oLeft = touches.clientX - block.parentElement.offsetLeft - oW;
+			var oTop = touches.clientY - block.parentElement.offsetTop - oH - 16;
 			//console.log('block位置',block.offsetLeft,block.offsetTop);
 			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
 			//console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
 			//console.log('不超出的的坐标',document.documentElement.clientWidth - block.offsetWidth,document.documentElement.clientHeight - block.offsetHeight)
-			console.log('鼠标位置',touches.clientX,touches.clientY);
+			<!-- console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop); -->
+			<!-- console.log('调整位置',oLeft,oTop); -->
 			//if(oLeft < 0) {
 			//oLeft = 0;
 			//}else if(oLeft > document.documentElement.clientWidth - block.offsetWidth) {
@@ -285,9 +287,17 @@
 			//}else if(oTop > document.documentElement.clientHeight - block.offsetHeight) {
 			//oTop = (document.documentElement.clientHeight - block.offsetHeight);
 			//}
+			block.style.position = "absolute";
 			block.style.left = oLeft + "px";
 			block.style.top = oTop + "px";
-			block.style.position = "absolute";
+			
+			
+			<!-- block.style.position = "fixed"; -->
+			<!-- block.style.left=touches.clientX - block.offsetWidth/2 + 'px'; -->
+			<!-- block.style.top=touches.clientY - block.offsetHeight*2 + 'px';	 -->
+			
+			console.log(block.style.left,block.style.top)
+			
 			var guo1 = document.getElementById("div1");
 			var guo2 = document.getElementById("div2");
 			var guo3 = document.getElementById("div3");
@@ -331,7 +341,7 @@
 			addEventListener("touchend",function(e) {
 			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
 				return;
-			var guo1 = document.getElementById("div1");
+			var guo1 = document.getElementById("div1");			
 			var guo2 = document.getElementById("div2");
 			var guo3 = document.getElementById("div3");
 			var guo4 = document.getElementById("div4");
@@ -372,12 +382,22 @@
 			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
 				guo5.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
 				
-			block.style.position = '';	
-			guo1.style.position = 'absolute';
-			guo2.style.position = 'absolute';
-			guo3.style.position = 'absolute';
-			guo4.style.position = 'absolute';
-			guo5.style.position = 'absolute';
+			block.style.position = '';
+			console.log('touchend',window.getComputedStyle(guo1).getPropertyValue("position"));	
+			//alert(window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed');
+			if (window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed')
+			{
+				<!-- guo1.setAttribute('style', 'position:absolute'); -->
+				<!-- guo2.setAttribute('style', 'position:absolute'); -->
+				<!-- guo3.setAttribute('style', 'position:absolute'); -->
+				<!-- guo4.setAttribute('style', 'position:absolute'); -->
+				<!-- guo5.setAttribute('style', 'position:absolute'); -->
+				guo1.style.position = 'absolute';
+				guo2.style.position = 'absolute';
+				guo3.style.position = 'absolute';
+				guo4.style.position = 'absolute';
+				guo5.style.position = 'absolute';
+			}
 			document.removeEventListener("touchmove",defaultEvent,{ passive: false });
 			},false );
 			function defaultEvent(e) {
