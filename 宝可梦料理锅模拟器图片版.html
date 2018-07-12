@@ -300,14 +300,13 @@
 			// 绑定touchstart事件
 			addEventListener("touchstart", function(e) {
 			//console.log(e);
-			
-			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+			console.log(e.target.tagName != 'IMG');
+			if (e.target.tagName != 'IMG')
 				return;
 			//阻止页面的滑动默认事件
 			document.addEventListener("touchmove",defaultEvent,{ passive: false });				
 			touches = e.touches[0];
-			var block = e.target;
-			
+			block = e.target;
 			//console.log('目标',e.target.id);
 			//console.log('触摸点相对浏览器窗口的位置',touches.clientX,touches.clientY);
 			//console.log('block位置',block.offsetLeft,block.offsetTop);
@@ -315,18 +314,18 @@
 			//console.log('触摸点相对于页面的位置',touches.pageX,touches.pageY);
 			oW = touches.clientX - block.parentElement.offsetLeft - block.offsetLeft;
 			oH = touches.clientY - block.parentElement.offsetTop - block.offsetTop;
-			<!-- console.log('p位置',block.offsetLeft,'-',oW,block.offsetTop,'-',oH); -->
-			<!-- console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop); -->
+			console.log('p位置',block.offsetLeft,'-',oW,block.offsetTop,'-',oH);
+			console.log('鼠标位置',touches.clientX - block.parentElement.offsetLeft,touches.clientY - block.parentElement.offsetTop);
 			},false )
 			
 			
 			addEventListener("touchmove", function(e) {
 			var block = e.target;
-			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+			if (e.target.tagName != 'IMG')
 				return;
 			touches = e.touches[0];
 			var oLeft = touches.clientX - block.parentElement.offsetLeft - oW;
-			var oTop = touches.clientY - block.parentElement.offsetTop - oH - 16;
+			var oTop = touches.clientY - block.parentElement.offsetTop - oH;
 			//console.log('block位置',block.offsetLeft,block.offsetTop);
 			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
 			//console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
@@ -395,7 +394,7 @@
 			},false );
 
 			addEventListener("touchend",function(e) {
-			if (e.target.tagName != 'P' || e.target.innerText == '请把料理拖放到矩形中：')
+			if (e.target.tagName != 'IMG' )
 				return;
 			var guo1 = document.getElementById("div1");			
 			var guo2 = document.getElementById("div2");
@@ -424,20 +423,20 @@
 			<!-- console.log(guo5.offsetTop); -->
 			
 			if((touches.clientX >= guo1.offsetLeft && touches.clientX <= (guo1.offsetLeft + guo1.offsetWidth)) && (touches.clientY >= guo1.offsetTop && touches.clientY <= (guo1.offsetTop + guo1.offsetHeight)))
-				guo1.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
-			
+				guo1.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
+				guo1.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
 			if((touches.clientX >= guo2.offsetLeft && touches.clientX <= (guo2.offsetLeft + guo2.offsetWidth)) && (touches.clientY >= guo2.offsetTop && touches.clientY <= (guo2.offsetTop + guo2.offsetHeight)))
-				guo2.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
-
+				guo2.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
+				guo2.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
 			if((touches.clientX >= guo3.offsetLeft && touches.clientX <= (guo3.offsetLeft + guo3.offsetWidth)) && (touches.clientY >= guo3.offsetTop && touches.clientY <= (guo3.offsetTop + guo3.offsetHeight)))
-				guo3.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
-
+				guo3.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
+				guo3.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
 			if((touches.clientX >= guo4.offsetLeft && touches.clientX <= (guo4.offsetLeft + guo4.offsetWidth)) && (touches.clientY >= guo4.offsetTop && touches.clientY <= (guo4.offsetTop + guo4.offsetHeight)))
-				guo4.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
-
+				guo4.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
+				guo4.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
 			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
-				guo5.getElementsByTagName("p")[0].innerHTML = e.target.innerText;
-				
+				guo5.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
+				guo5.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
 			block.style.position = '';
 			console.log('touchend',window.getComputedStyle(guo1).getPropertyValue("position"));	
 			//alert(window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed');
