@@ -446,20 +446,30 @@
 			<!-- console.log(guo5.offsetTop); -->
 			
 			if((touches.clientX >= guo1.offsetLeft && touches.clientX <= (guo1.offsetLeft + guo1.offsetWidth)) && (touches.clientY >= guo1.offsetTop && touches.clientY <= (guo1.offsetTop + guo1.offsetHeight)))
+			{
 				guo1.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
 				guo1.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+			}
 			if((touches.clientX >= guo2.offsetLeft && touches.clientX <= (guo2.offsetLeft + guo2.offsetWidth)) && (touches.clientY >= guo2.offsetTop && touches.clientY <= (guo2.offsetTop + guo2.offsetHeight)))
+			{
 				guo2.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
 				guo2.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+			}
 			if((touches.clientX >= guo3.offsetLeft && touches.clientX <= (guo3.offsetLeft + guo3.offsetWidth)) && (touches.clientY >= guo3.offsetTop && touches.clientY <= (guo3.offsetTop + guo3.offsetHeight)))
+			{
 				guo3.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
 				guo3.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+			}
 			if((touches.clientX >= guo4.offsetLeft && touches.clientX <= (guo4.offsetLeft + guo4.offsetWidth)) && (touches.clientY >= guo4.offsetTop && touches.clientY <= (guo4.offsetTop + guo4.offsetHeight)))
+			{
 				guo4.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
 				guo4.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+			}
 			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
+			{
 				guo5.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
 				guo5.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+			}
 				
 			block.style.position = '';
 			console.log('touchend',window.getComputedStyle(guo1).getPropertyValue("position"));	
