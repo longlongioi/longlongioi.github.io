@@ -300,17 +300,24 @@
 				
 						
 			}
+			 
+			document.onscroll = function() {   
+			topValue = document.documentElement.scrollTop;  
+			leftValue = document.documentElement.scrollLeft;
+			console.log('scroll');
+			}  
+
 			var oW,oH;
 			//var block = document.getElementById("block");
 			var touches = 0;
 			// 绑定touchstart事件
-			addEventListener("touchstart", function(e) {
+			document.addEventListener("touchstart", function(e) {
 			//console.log(e);
 			console.log(e.target.tagName != 'IMG');
 			if (e.target.tagName != 'IMG')
 				return;
 			//阻止页面的滑动默认事件
-			document.addEventListener("touchmove",defaultEvent,{ passive: false });				
+			document.addEventListener("touchmove",defaultEvent,{ passive: false });			
 			touches = e.touches[0];
 			block = e.target;
 			//console.log('目标',e.target.id);
@@ -325,6 +332,8 @@
 			},false )
 			
 			
+			
+			
 			addEventListener("touchmove", function(e) {
 			var block = e.target;
 			if (e.target.tagName != 'IMG')
@@ -332,6 +341,14 @@
 			touches = e.touches[0];
 			var oLeft = touches.clientX - block.parentElement.offsetLeft - oW;
 			var oTop = touches.clientY - block.parentElement.offsetTop - oH;
+			
+			<!-- try{ -->
+				<!-- console.log('try'); -->
+				<!-- document.addEventListener("touchmove",defaultEvent,{ passive: false }); -->
+			<!-- }catch(e) { -->
+				<!-- console.log(e.name + ": " + e.message); -->
+				<!-- return; -->
+			<!-- } -->
 			//console.log('block位置',block.offsetLeft,block.offsetTop);
 			//console.log('block宽高',block.offsetWidth,block.offsetHeight);
 			//console.log('外框宽高',document.documentElement.clientWidth,document.documentElement.clientWidth);
@@ -348,16 +365,16 @@
 			//}else if(oTop > document.documentElement.clientHeight - block.offsetHeight) {
 			//oTop = (document.documentElement.clientHeight - block.offsetHeight);
 			//}
-			block.style.position = "absolute";
-			block.style.left = oLeft + "px";
-			block.style.top = oTop + "px";
+			<!-- block.style.position = "absolute"; -->
+			<!-- block.style.left = oLeft + "px"; -->
+			<!-- block.style.top = oTop + "px"; -->
 			
 			
-			<!-- block.style.position = "fixed"; -->
-			<!-- block.style.left=touches.clientX - block.offsetWidth/2 + 'px'; -->
-			<!-- block.style.top=touches.clientY - block.offsetHeight*2 + 'px';	 -->
+			block.style.position = "fixed";
+			block.style.left=touches.clientX - block.offsetWidth/2 + 'px';
+			block.style.top=touches.clientY - block.offsetHeight/2 + 'px';	
 			
-			console.log(block.style.left,block.style.top)
+			<!-- console.log(block.style.left,block.style.top) -->
 			
 			var guo1 = document.getElementById("div1");
 			var guo2 = document.getElementById("div2");
@@ -366,30 +383,30 @@
 			var guo5 = document.getElementById("div5");
 			
 			guo1.style.left = guo1.offsetLeft + "px";
-			console.log(guo1.offsetLeft);
-			console.log(guo1.offsetTop);
+			<!-- console.log(guo1.offsetLeft); -->
+			<!-- console.log(guo1.offsetTop); -->
 			guo1.style.top = guo1.offsetTop + "px";
 			
-			console.log(guo2.offsetLeft);
-			console.log(guo2.offsetTop);
+			<!-- console.log(guo2.offsetLeft); -->
+			<!-- console.log(guo2.offsetTop); -->
 			guo2.style.left = guo2.offsetLeft + 'px';
 			guo2.style.top = guo2.offsetTop + 'px';	
 			
 					
-			console.log(guo3.offsetLeft);
-			console.log(guo3.offsetTop);
+			<!-- console.log(guo3.offsetLeft); -->
+			<!-- console.log(guo3.offsetTop); -->
 			guo3.style.left = guo3.offsetLeft + 'px';
 			guo3.style.top = guo3.offsetTop + 'px';
 			
 			
-			console.log(guo4.offsetLeft);
-			console.log(guo4.offsetTop);
+			<!-- console.log(guo4.offsetLeft); -->
+			<!-- console.log(guo4.offsetTop); -->
 			guo4.style.left = guo4.offsetLeft + 'px';
 			guo4.style.top = guo4.offsetTop + 'px';
 			
 			
-			console.log(guo5.offsetLeft);
-			console.log(guo5.offsetTop);
+			<!-- console.log(guo5.offsetLeft); -->
+			<!-- console.log(guo5.offsetTop); -->
 			guo5.style.left = guo5.offsetLeft + 'px';
 			guo5.style.top = guo5.offsetTop + 'px';
 			guo1.style.position = 'fixed';
@@ -400,7 +417,7 @@
 			},false );
 
 			addEventListener("touchend",function(e) {
-			if (e.target.tagName != 'IMG' )
+			if (e.target.tagName != 'IMG')
 				return;
 			var guo1 = document.getElementById("div1");			
 			var guo2 = document.getElementById("div2");
@@ -433,16 +450,17 @@
 				guo1.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
 			if((touches.clientX >= guo2.offsetLeft && touches.clientX <= (guo2.offsetLeft + guo2.offsetWidth)) && (touches.clientY >= guo2.offsetTop && touches.clientY <= (guo2.offsetTop + guo2.offsetHeight)))
 				guo2.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
-				guo2.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
+				guo2.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
 			if((touches.clientX >= guo3.offsetLeft && touches.clientX <= (guo3.offsetLeft + guo3.offsetWidth)) && (touches.clientY >= guo3.offsetTop && touches.clientY <= (guo3.offsetTop + guo3.offsetHeight)))
 				guo3.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
-				guo3.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
+				guo3.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
 			if((touches.clientX >= guo4.offsetLeft && touches.clientX <= (guo4.offsetLeft + guo4.offsetWidth)) && (touches.clientY >= guo4.offsetTop && touches.clientY <= (guo4.offsetTop + guo4.offsetHeight)))
 				guo4.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
-				guo4.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
+				guo4.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
 			if((touches.clientX >= guo5.offsetLeft && touches.clientX <= (guo5.offsetLeft + guo5.offsetWidth)) && (touches.clientY >= guo5.offsetTop && touches.clientY <= (guo5.offsetTop + guo5.offsetHeight)))
 				guo5.getElementsByTagName("IMG")[0].setAttribute('src', e.target.getAttribute("src"));
-				guo5.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("src"));
+				guo5.getElementsByTagName("IMG")[0].setAttribute('alt', e.target.getAttribute("alt"));
+				
 			block.style.position = '';
 			console.log('touchend',window.getComputedStyle(guo1).getPropertyValue("position"));	
 			//alert(window.getComputedStyle(guo1).getPropertyValue("position") == 'fixed');
@@ -459,11 +477,14 @@
 				guo4.style.position = 'absolute';
 				guo5.style.position = 'absolute';
 			}
-			
 			document.removeEventListener("touchmove",defaultEvent,{ passive: false });
 			},false );
-			function defaultEvent(e) {
-			e.preventDefault();
+			function defaultEvent(e) {				
+			if (document.documentElement.scrollTop == topValue && document.documentElement.scrollLeft == leftValue)
+				e.preventDefault();
+			}
+			function defaultPEvent(e) {
+			e.stopPropagation();			
 			}
 		</script>
 
@@ -496,6 +517,13 @@
 			<!-- <p ondragstart="drag(event)" draggable="true" id="bag1"></p> -->
 			<img src="pokemon/小红.jpg"  alt="小红" id="bag1" ondragstart="drag(event)" draggable="true" />
 		</div>
+		<script>
+		$('#bag1').hover(function(){
+		layer.tips('Hello tips!', '#bag1');
+		},function(){		
+		parent.layer.close(layer.index);
+		});
+		</script>
 		<div class="bag2">
 			<!-- <p ondragstart="drag(event)" draggable="true" id="bag2">大红</p> -->
 			<img src="pokemon/大红.jpg"  alt="大红" id="bag2" ondragstart="drag(event)" draggable="true" />
